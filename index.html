@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+    }
+
+    .container {
+      width: 50%;
+      margin: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    select,
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Hitung Nilai Rata-rata</h2>
+    <form id="gradeForm">
+      <label for="name">Nama:</label>
+      <input type="text" class="form-control" id="name" required>
+      <br>
+      <br>
+
+      <label for="course">Mata Kuliah:</label>
+      <input type="text" class="form-control" id="course" required>
+      <br>
+      <br>
+
+      <label for="grade">Grade:</label>
+      <select id="grade" required>
+        <option value="">Pilih Grade</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+      </select>
+
+      <button type="button" class="btn btn-primary mt-4 mb-2" onclick="calculateAverage()">Hitung</button>
+    </form>
+  </div>
+
+  <div class="container" >
+    <table class="table table-bordered" id="resultTable">
+      <tr>
+        <th>Nama</th>
+        <th>Mata Kuliah</th>
+        <th>Grade</th>
+        <th>Nilai Rata-rata</th>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    function calculateAverage() {
+      const gradeValues = {
+        A: 4,
+        B: 3,
+        C: 2,
+        D: 1,
+        E: 0
+      };
+      console.log("gradeValues : ", gradeValues);
+      let name = document.getElementById("name").value;
+      console.log("name : ", name);
+      let course = document.getElementById("course").value;
+      console.log("course : ", course);
+      let selectedGrade = document.getElementById("grade").value;
+      console.log("selectedGrade : ", selectedGrade);
+
+      if (selectedGrade in gradeValues) {
+        const gradeValue = gradeValues[selectedGrade];
+        const resultTable = document.getElementById("resultTable");
+
+        const totalGradeValues = gradeValue; // For simplicity, you can extend this for multiple subjects
+        const average = totalGradeValues / 1; // Assuming 1 subject for now
+
+        const newRow = resultTable.insertRow(-1); // Insert a row at the end of the table
+        newRow.insertCell(0).innerHTML = name;
+        newRow.insertCell(1).innerHTML = course;
+        newRow.insertCell(2).innerHTML = selectedGrade;
+        newRow.insertCell(3).innerHTML = average.toFixed(2);
+      }
+    }
+  </script>
+</body>
+
+</html>
