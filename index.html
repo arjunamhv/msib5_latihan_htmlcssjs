@@ -82,22 +82,18 @@
         D: 1,
         E: 0
       };
-      console.log("gradeValues : ", gradeValues);
       let name = document.getElementById("name").value;
-      console.log("name : ", name);
       let course = document.getElementById("course").value;
-      console.log("course : ", course);
       let selectedGrade = document.getElementById("grade").value;
-      console.log("selectedGrade : ", selectedGrade);
 
       if (selectedGrade in gradeValues) {
         const gradeValue = gradeValues[selectedGrade];
         const resultTable = document.getElementById("resultTable");
 
-        const totalGradeValues = gradeValue; // For simplicity, you can extend this for multiple subjects
-        const average = totalGradeValues / 1; // Assuming 1 subject for now
+        const totalGradeValues = gradeValue; 
+        const average = totalGradeValues / 1;
 
-        const newRow = resultTable.insertRow(-1); // Insert a row at the end of the table
+        const newRow = resultTable.insertRow(-1);
         newRow.insertCell(0).innerHTML = name;
         newRow.insertCell(1).innerHTML = course;
         newRow.insertCell(2).innerHTML = selectedGrade;
